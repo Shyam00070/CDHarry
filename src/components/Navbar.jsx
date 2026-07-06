@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 
 function Navbar(props)
 {
+ const onClickBlue = () => {
+    document.body.style.backgroundColor = "blue";
+    document.body.style.color = "white";
+    props.showAlert("Blue mode has been enabled", "success");
+    document.title = "Text Analyzer - Blue Mode";
+    props.setBlue(!props.blue);
+  }
     return(
     <>
     <nav
@@ -13,25 +20,33 @@ function Navbar(props)
     backgroundColor: props.mode === "dark" ? "black" : "white",
     color: props.mode === "dark" ? "white" : "black",
   }}
+  blue ={{
+    backgroundColor: "blue",
+    color: "white",
+    height: "30px",
+  width: "30px",
+  borderRadius: "50%",
+  cursor: "pointer",
+  }}
 >
   <div className="container-fluid">
-    {/*<Link className="navbar-brand" to="/">
+    <Link className="navbar-brand" to="/">
       {props.title}
-    </Link>*/}
+    </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-         {/*} <Link className="nav-link active" aria-current="page" to="/Home">
+          <Link className="nav-link active" aria-current="page" to="/Home">
             Home
-          </Link>*/}
+          </Link>
         </li>
-        <li className="nav-item">
-          {/*<Link className="nav-link" to="/about">
+        <li className="nav-item" onClick={props.onDisplay}>
+          <Link className="nav-link" to="/about">
             About Us
-          </Link>*/}
+          </Link>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +63,8 @@ function Navbar(props)
           <a className="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-           <div className={`form-check form-switch mx-2 text-${props.mode === "light" ? "dark" : "light"}`}>
+         <div className="blue mx-2" onClick={onClickBlue} style={{ backgroundColor: "blue", color: "white", height: "30px", width: "30px", borderRadius: "50%", cursor: "pointer" }}></div>
+          <div className={`form-check form-switch mx-2 text-${props.mode === "light" ? "dark" : "light"}`}>
         <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="switchCheckDefault" />
         <label className="form-check-label" htmlFor="switchCheckDefault">{props.mode === "light" ? "Enable Dark Mode" : "Enable Light Mode"}</label>
     </div>

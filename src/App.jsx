@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import TextForm from "./components/TextForm.jsx";
-//import AboutUs from "./components/AboutUs.jsx";
+import AboutUs from "./components/AboutUs.jsx";
 import { Alert } from "./components/Alert.jsx";
 import { useState , useEffect } from "react";
-/*import {
+import {
   BrowserRouter as Router,
   Routes,
   Route
-} from "react-router-dom";*/
+} from "react-router-dom";
 
 function App()
 {
@@ -44,17 +44,31 @@ function App()
   document.body.style.color =
     mode === "dark" ? "white" : "#212529";
 }, [mode]);
+const [Display , setDisplay] = useState("none");
+const onDisplay = () =>
+{
+  if(Display === "none")
+  {
+    setDisplay("block");
+  }
+  else
+  {
+    setDisplay("none");
+  }
+}
+const [blue , setBlue] = useState(false);
   return(
      <>
-      <Navbar title="Text Analyzer" mode={mode} toggleMode={toggleMode}  />
+     <Router>
+        <Navbar title="Text Analyzer" mode={mode} toggleMode={toggleMode} display={Display} onDisplay={onDisplay} blue={blue} setBlue={setBlue} />
       <Alert alert={alert} />
      <div className="container">
-      <TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert} />
-       {/*<Routes>
-          <Route  path="/Home" element={<TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert} />} />
-          <Route  path="/about" element={<AboutUs mode={mode} />} />       
-       </Routes>*/}
+       <Routes>
+          <Route  path="/Home" element={<TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert} display={Display} onDisplay={onDisplay} />} />
+          <Route  path="/about" element={<AboutUs mode={mode}  display={Display} onDisplay={onDisplay}/>} />       
+       </Routes>
       </div>
+     </Router>
     </>
   );
 }

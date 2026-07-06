@@ -22,7 +22,7 @@ export default function AboutUs(props) {
   <div className="accordion-item">
     <h2 className="accordion-header my-1">
       <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Accordion Item #1
+        <strong>Free to use</strong>
       </button>
     </h2>
     <div id="flush-collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -32,7 +32,7 @@ export default function AboutUs(props) {
   <div className="accordion-item">
     <h2 className="accordion-header my-1">
       <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Accordion Item #2
+        <strong>Browser Compatible</strong>
       </button>
     </h2>
     <div id="flush-collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -42,7 +42,7 @@ export default function AboutUs(props) {
   <div className="accordion-item">
     <h2 className="accordion-header my-1">
       <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
+       <strong> Easy to use</strong>
       </button>
     </h2>
     <div id="flush-collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
